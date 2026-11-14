@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#020a1c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>DIPA AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="scan"></div>
+
+<!-- Boot / activation overlay (browsers require a tap before audio + mic) -->
+<div id="boot" class="boot">
+  <div class="boot-ring"></div>
+  <h1>DIPA <span>AI</span></h1>
+  <p class="boot-sub">Holographic Assistant Interface</p>
+  <button id="bootBtn" class="boot-btn">INITIALIZE DIPA</button>
+</div>
+
+<main class="app">
+  <header class="top">
+    <div class="brand"><b>DIPA</b> AI</div>
+    <div class="top-right">
+      <span id="statusDot" class="dot"></span>
+      <button id="voiceBtn" class="icon-btn" aria-label="Change voice" title="Change voice">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+      </button>
+      <button id="muteBtn" class="icon-btn" aria-label="Toggle voice output" title="Voice on/off">
+        <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path id="waves" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="stage">
+    <canvas id="orb" aria-hidden="true"></canvas>
+    <div class="orb-label"><span id="stateText">STANDBY</span></div>
+  </section>
+
+  <div class="langs" role="tablist" aria-label="Language">
+    <button class="chip active" data-lang="auto">AUTO</button>
+    <button class="chip" data-lang="en">English</button>
+    <button class="chip" data-lang="bn">বাংলা</button>
+    <button class="chip" data-lang="hi">हिन्दी</button>
+  </div>
+
+  <section id="log" class="log" aria-live="polite"></section>
+
+  <form id="form" class="bar" autocomplete="off">
+    <button type="button" id="mic" class="mic" aria-label="Voice input">
+      <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" fill="none"/></svg>
+    </button>
+    <input id="input" type="text" placeholder="Talk to DIPA…  বলুন  /  बोलिए" enterkeyhint="send">
+    <button type="submit" id="send" class="send" aria-label="Send">
+      <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+    </button>
+  </form>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
